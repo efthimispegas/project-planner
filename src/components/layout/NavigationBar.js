@@ -7,9 +7,13 @@ import SignedOutLinks from './SignedOutLinks';
 
 class NavigationBar extends Component {
   render() {
-    const { authStatus } = this.props;
+    const { authStatus, profile } = this.props;
     // console.log(authStatus);
-    const links = authStatus.uid ? <SignedInLinks /> : <SignedOutLinks />;
+    const links = authStatus.uid ? (
+      <SignedInLinks profile={profile} />
+    ) : (
+      <SignedOutLinks />
+    );
     return (
       <nav>
         <div className="nav-wrapper grey darken-3">
@@ -25,10 +29,11 @@ class NavigationBar extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   console.log(state);
   return {
-    authStatus: state.firebase.auth
+    authStatus: state.firebase.auth,
+    profile: state.firebase.profile
   };
 };
 

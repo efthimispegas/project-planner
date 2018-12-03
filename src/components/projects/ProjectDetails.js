@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
+import { capitalize } from 'lodash/string';
+import moment from 'moment';
 
 class ProjectDetails extends Component {
   render() {
@@ -11,13 +13,15 @@ class ProjectDetails extends Component {
       content,
       authorFirstname,
       authorLastname,
-      date
+      createdAt
     } = this.props.project;
 
     const { authStatus } = this.props;
     if (!authStatus.uid) {
       return <Redirect to="/signin" />;
     }
+
+    console.log(this.props);
 
     if (this.props.project) {
       return (
@@ -31,9 +35,10 @@ class ProjectDetails extends Component {
             </div>
             <div className="card-action gret lighten-4 grey-text">
               <div>
-                Posted by the user {authorFirstname + ' ' + authorLastname}
+                Posted by the user{' '}
+                {capitalize(authorFirstname) + ' ' + capitalize(authorLastname)}
               </div>
-              <div>{}</div>
+              <div>{moment(createdAt.toDate()).calendar()}</div>
             </div>
           </div>
         </div>

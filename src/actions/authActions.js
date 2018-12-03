@@ -22,7 +22,7 @@ export const signUp = newUser => {
     const firestore = getFirestore();
 
     const { email, password, firstname, lastname } = newUser;
-
+    const initials = capitalize(firstname)[0] + capitalize(lastname)[0];
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -35,11 +35,14 @@ export const signUp = newUser => {
           .set({
             firstname,
             lastname,
-            initials: capitalize(firstname[0]) + capitalize(lastname[0])
+            initials
           });
       })
       .then(() => {
-        dispatch({ type: 'SIGNUP_SUCCESS' });
+        dispatch({
+          type: 'SIGNUP_SUCCESS',
+          userCredentials: { firstname, lastname, initials }
+        });
       })
       .catch(error => {
         dispatch({ type: 'SIGNUP_FAIL', error });

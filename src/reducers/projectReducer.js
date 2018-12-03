@@ -5,6 +5,7 @@ const projectReducer = (state = initState, action) => {
     case 'CREATE_PROJECT_SUCCESS':
       console.log('created project', action.project);
       return {
+        ...state,
         project: action.project
       };
 

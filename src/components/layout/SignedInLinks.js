@@ -9,6 +9,7 @@ class SignedInLinks extends Component {
   };
 
   render() {
+    const { profile } = this.props;
     return (
       <ul className="right">
         <li>
@@ -21,7 +22,9 @@ class SignedInLinks extends Component {
         </li>
         <li>
           <NavLink to="/">
-            <div className="btn btn-floating pink lighten-1">TP</div>
+            <div className="btn btn-floating pink lighten-1">
+              {profile.initials}
+            </div>
           </NavLink>
         </li>
       </ul>
