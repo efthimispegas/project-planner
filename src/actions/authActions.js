@@ -21,8 +21,11 @@ export const signUp = newUser => {
     const firebase = getFirebase();
     const firestore = getFirestore();
 
-    const { email, password, firstname, lastname } = newUser;
-    const initials = capitalize(firstname)[0] + capitalize(lastname)[0];
+    let { email, password, firstname, lastname } = newUser;
+    firstname = capitalize(firstname);
+    lastname = capitalize(lastname);
+
+    const initials = firstname[0] + lastname[0];
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)

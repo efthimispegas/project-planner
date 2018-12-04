@@ -35,7 +35,6 @@ class SignIn extends Component {
         <form className="col s6 m6" onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="input-field col s6 offset-m3">
-              <i className="material-icons prefix">account_circle</i>
               <input
                 className="validate"
                 id="email"
@@ -49,7 +48,6 @@ class SignIn extends Component {
 
           <div className="row">
             <div className="input-field col s6 offset-m3">
-              <i className="material-icons prefix">edit</i>
               <input
                 className="validate"
                 id="password"

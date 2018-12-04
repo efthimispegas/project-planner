@@ -69,7 +69,7 @@ class SignUp extends Component {
     for (let key in this.state) {
       // save to localStorage
       localStorage.setItem(key, JSON.stringify(this.state[key]));
-      console.log(`key: ${key}, value: ${this.state[key]}`);
+      // console.log(`key: ${key}, value: ${this.state[key]}`);
     }
   }
 
@@ -108,7 +108,6 @@ class SignUp extends Component {
 
           <div className="row">
             <div className="input-field col s6 offset-m3">
-              <i className="material-icons prefix">account_circle</i>
               <input
                 className="validate"
                 id="username"
@@ -121,7 +120,6 @@ class SignUp extends Component {
 
           <div className="row">
             <div className="input-field col s6 offset-m3">
-              <i className="material-icons prefix">email</i>
               <input
                 className="validate"
                 id="email"
@@ -134,7 +132,6 @@ class SignUp extends Component {
 
           <div className="row">
             <div className="input-field col s6 offset-m3">
-              <i className="material-icons prefix">edit</i>
               <input
                 className="validate"
                 id="password"
